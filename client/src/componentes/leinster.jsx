@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import getCervezas, { postCervezas } from "../store/actions/index.js";
 import styles from "./leinster.module.css"
+import SearchBar from "./search.jsx";
 
 export default function Leinster(){
   const dispatch = useDispatch()
-    const cervezas = useSelector((state) => state.cervezas)
+    const cervezas = useSelector((state) => state.filtrado)
     console.log(cervezas)
     const [input, setInput] = useState({
         nombre: "",
@@ -55,6 +56,12 @@ export default function Leinster(){
 
       })
     }
+    let filter
+    function handleChangeSearch(e){
+      console.log(e.target.value)
+      filter = cervezas.filter(el => el.nombre.toLowerCase() == e.target.value.toLowerCase())
+      console.log(filter)
+    }
     function handleSubmit(e){
       e.preventDefault()
       dispatch(postCervezas(input))
@@ -73,12 +80,18 @@ export default function Leinster(){
             
   
 }
+
+
 let cont = 0
     return(
         <div className={styles.container}>
         <div className={styles.logo}>
         <img src="https://sanjuanrugbyclub.files.wordpress.com/2018/01/leinster.jpg" alt='imagen' width="5%" height="100%" />
         </div>
+          <div className={styles.search}>
+          {/* <input type="text" onChange={handleChangeSearch}  placeholder="Buscar"/> */}
+           <SearchBar/> 
+          </div>
         <div className={styles.seleccion}>
         <table class="table">
   <thead>
@@ -96,9 +109,10 @@ let cont = 0
   <tbody className={styles.productos}>
 
     {
-      cervezas?.map( el => {
-        return (
-          <tr> 
+      
+            cervezas.map( el => {
+              return (
+                <tr> 
             <th scope="row">{cont = cont + 1}</th>
             <td>
             <img src={el.imagen} alt='imagen' with="40px" height="40px" />
@@ -107,23 +121,17 @@ let cont = 0
             {el.nombre}
             </td>
             <td>{el.cerveceria}</td>
-            <td><input type="number" placeholder={el.precio} width="20px"></input></td>
+            <td><input type="number" placeholder={el.precio} className={styles.precioN}></input></td>
             <td>{el.happy}</td>
             <td><button>modificar</button></td>
             <label className={styles.switch}>
-            <input type="checkbox"/>
              <span className={styles.slider}></span>
               </label>
- {/*            <div className="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"></input>
-  <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-</div> */}
         
           </tr>
-        )
-          
-        
-    })
+              )
+            })
+      
     }
    {/*  <tr>
       <th scope="row">1</th>

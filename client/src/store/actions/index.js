@@ -1,6 +1,6 @@
 import axios from 'axios'
 export const FETCH_CERVEZAS = "FETCH_CERVEZAS"
-
+export const FILTRAR_CERVEZAS ="FILTRAR_CERVEZAS"
 
 
 export default  function getCervezas() {
@@ -19,5 +19,11 @@ export function postCervezas(payload){
     return async function(dispatch) {
         const response = await axios.post('http://localhost:3001/', payload)
         return response 
+    }
+}
+export function buscarCervezas(payload){
+    return {
+        type:FILTRAR_CERVEZAS,
+        payload
     }
 }
