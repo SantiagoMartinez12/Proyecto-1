@@ -4,7 +4,7 @@ import Leinster from './componentes/leinster';
 import getCervezas from  './store/actions/index.js'
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Carta from './componentes/carta';
+import ContenedorCarta from './componentes/ContenedorCarta';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
     <div>
       <Routes >
         <Route path='/' element={<Leinster />}></Route>
-        <Route path='/carta' element={<Carta />}></Route>
+        <Route path='/carta' element={<ContenedorCarta />}></Route>
       </Routes>
 
     </div>
