@@ -9,8 +9,6 @@ export default function FiltrosCarta(){
         justify-content: center;
     `
     const Button = styled.button`
-        background-color: grey;
-        color: black;
         height: 80px;
         width: 50vw;
         margin-top: 50px;
@@ -19,7 +17,7 @@ export default function FiltrosCarta(){
 
     return (
         <DivCenter>
-            <Button>Filtros</Button>
+            <Button className="btn btn-primary">Filtros</Button>
             
         </DivCenter>
     )
