@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import "bootstrap/dist/css/bootstrap.min.css"
 
 
 export default function Carta(){
@@ -15,36 +16,29 @@ export default function Carta(){
         display: flex;
         justify-content: center;
     `
-    const Tr = styled.tr`
-        width: 70vw;
-        display: flex;
-        justify-content: space-evenly;
-        border: solid 1px yellow;
-        background-color: yellow;
-    `
 
 
     return(
         <DivTabla>
-            <table>
+            <table className='table table-striped'>
                 <thead>
-                    <Tr>
-                        <td>Nombre</td>
-                        <td>Estilo</td>
-                        <td>Cervecería</td>
-                        <td>Precio</td>
-                   </Tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Estilo</th>
+                        <th>Cervecería</th>
+                        <th>Precio</th>
+                   </tr>
                 </thead>
                 <tbody>
                 
                     {
                         cervezas?.map(el => 
-                            <Tr key={key++}>
+                            <tr key={key++}>
                                 <td>{el.nombre}</td>
                                 <td>{el.estilo}</td>
                                 <td>{el.cerveceria}</td>
                                 <td>{el.precio}</td>
-                            </Tr>
+                            </tr>
                             )
                     }                
 

@@ -8,12 +8,11 @@ import FiltrosCarta from './FiltrosCarta';
 export default function Contenedor(){
    
     const DivContenedor = styled.div`
-    background-color: green;
     height: 100vh;
     width: 100vw;
     `
     const DivTitulo = styled.div`
-        background-color: orange;
+        background-color: lightgray;
         margin: 0;
         padding: 20px;
         display: flex;
@@ -21,11 +20,11 @@ export default function Contenedor(){
         justify-content: center;
     `
     const H1 = styled.h1`
-        color: #fafafa;
+        color: black;
         margin: 0 auto;
     `
     const H2 = styled.h2`
-    color: #fafafa;
+    color: black;
     margin: 0 auto;
 `
 
